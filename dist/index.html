@@ -1,0 +1,35 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+    <script>
+      const nativeGlobal = Function("return this")();
+      nativeGlobal.__QIANKUN_WINDOW__ = nativeGlobal.__QIANKUN_WINDOW__ || {};
+      nativeGlobal.__QIANKUN_WINDOW__["app2"] = nativeGlobal.proxy || nativeGlobal;
+    </script>
+        
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>App2 · Vue3 + Vite 微应用</title>
+    <script crossorigin="">
+      window["app2"] = {};
+      const lifecycleNames = ["bootstrap", "mount", "unmount", "update"];
+      import((__QIANKUN_WINDOW__["app2"].__INJECTED_PUBLIC_PATH_BY_QIANKUN__ || "").replace(/\.\/$/, "") + "./assets/index-wQF5VpJG.js").then((lifecycleHooks) => {
+        lifecycleNames.forEach((lifecycleName) =>
+          window["app2"][lifecycleName].resolve(
+            lifecycleHooks[lifecycleName],
+          ),
+        );
+      });
+      lifecycleNames.forEach((lifecycleName) => {
+        let resolve;
+        const promise = new Promise((_resolve) => (resolve = _resolve));
+        window["app2"][lifecycleName] = Object.assign(
+          (...args) => promise.then((lifecycleHook) => lifecycleHook(...args)),
+          { resolve },
+        );
+      });
+    </script>
+  </head>
+  <body>
+    <div id="app2"></div>
+  
+
+</body></html>
